@@ -11,5 +11,3 @@ start-yarn.sh
 # Start Spark 
 echo "Starting Spark..."
 $SPARK_HOME/sbin/start-history-server.sh
-
-echo "HDFS, YARN, and Spark started successfully."
