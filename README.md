@@ -51,3 +51,11 @@ To run Query 3:
 To run Query 4:
 
 ```python code/q4.py```
+
+
+
+ ```hdfs dfsadmin -report```
+
+ ```hadoop fs -expunge``
+
+ ```hdfs dfs -du -h /user/your_username/your_folder```
