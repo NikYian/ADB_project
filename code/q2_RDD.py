@@ -7,6 +7,9 @@ import csv
 spark = SparkSession \
     .builder \
     .appName("Q2_RDD") \
+    .config("spark.executor.instances", "4") \
+    .config("spark.executor.cores", "1") \
+    .config("spark.executor.memory", "1g") \
     .getOrCreate() \
     .sparkContext
   
@@ -50,19 +53,6 @@ mapped_rdd = filtered_rdd.map(lambda col: (get_interval(col[0]), 1))
 result_rdd = mapped_rdd.reduceByKey(lambda x, y: x + y)
 
 print(result_rdd.collect())
-
-def toCSVLine(data):
-  return ','.join(str(d) for d in data)
-
-lines = result_rdd.map(toCSVLine)
-lines.saveAsTextFile('results/q1_RDD.csv')
-
-import subprocess
-
-hdfs_path = "hdfs://okeanos-master:54310/user/user/results/q1_RDD.csv"
-local_path = "/home/user/Project/results/"
-
-subprocess.run(["hadoop", "fs", "-copyToLocal", "-f", hdfs_path, local_path])
 
 # Stop the Spark session
 spark.stop()

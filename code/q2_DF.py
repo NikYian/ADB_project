@@ -55,20 +55,20 @@ result_df = filtered_df.groupBy().agg(
 # Show the result
 result_df.show(truncate=False)
 
-# Save the DataFrame to a CSV file
-result_df \
-  .coalesce(1) \
-  .write \
-  .mode('overwrite') \
-  .option('header', 'true') \
-  .csv('results/q2_DF.csv')
+# # Save the DataFrame to a CSV file
+# result_df \
+#   .coalesce(1) \
+#   .write \
+#   .mode('overwrite') \
+#   .option('header', 'true') \
+#   .csv('results/q2_DF.csv')
 
-import subprocess
+# import subprocess
 
-hdfs_path = "hdfs://okeanos-master:54310/user/user/results/q2_DF.csv"
-local_path = "/home/user/Project/results/"
+# hdfs_path = "hdfs://okeanos-master:54310/user/user/results/q2_DF.csv"
+# local_path = "/home/user/Project/results/"
 
-subprocess.run(["hadoop", "fs", "-copyToLocal", "-f", hdfs_path, local_path])
+# subprocess.run(["hadoop", "fs", "-copyToLocal", "-f", hdfs_path, local_path])
 
 # Stop the Spark session
 spark.stop()
