@@ -1,4 +1,4 @@
-# Import necessary Spark modules
+from app_duration import AppDuration
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import col, to_date, count
 
@@ -50,20 +50,29 @@ count = df_top_three_sql.count()
 df_top_three_sql.show(count, truncate=False)
 
 
-# Save the DataFrame to a CSV file
-df_top_three_sql \
-  .coalesce(1) \
-  .write \
-  .mode('overwrite') \
-  .option('header', 'true') \
-  .csv('results/q1_SQL.csv')
+# # Save the DataFrame to a CSV file
+# df_top_three_sql \
+#   .coalesce(1) \
+#   .write \
+#   .mode('overwrite') \
+#   .option('header', 'true') \
+#   .csv('results/q1_SQL.csv')
 
-import subprocess
+# import subprocess
 
-hdfs_path = "hdfs://okeanos-master:54310/user/user/results/q1_SQL.csv"
-local_path = "/home/user/Project/results/"
+# hdfs_path = "hdfs://okeanos-master:54310/user/user/results/q1_SQL.csv"
+# local_path = "/home/user/Project/results/"
 
-subprocess.run(["hadoop", "fs", "-copyToLocal", "-f", hdfs_path, local_path])
+# subprocess.run(["hadoop", "fs", "-copyToLocal", "-f", hdfs_path, local_path])
 
 # Stop the Spark session
+
+app_id = spark.sparkContext.applicationId
+
+
+duration = AppDuration(app_id)
+
+print('Sum duration of Jobs:', duration, ' seconds')
+
+
 spark.stop()

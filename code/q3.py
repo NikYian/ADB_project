@@ -142,8 +142,6 @@ def Q3(NUM_EXECUTORS = '4'):
   return duration
 
 
-###### print app duration
-
 if __name__ == "__main__":
   
   executors_ls = ["2","3","4"]
@@ -165,6 +163,6 @@ if __name__ == "__main__":
     
 # Print mean and std results
   for executors, stats in result_stats.items():
-    print(f"Executor: {executors}, Mean Duration: {stats['mean']:.2f} seconds, Std: {stats['std']:.2f}")
+    print(f"Number of Executors: {executors}, Mean Duration: {stats['mean']:.2f} seconds, Std: {stats['std']:.2f}")
 
 
