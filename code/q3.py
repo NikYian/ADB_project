@@ -144,14 +144,14 @@ def Q3(NUM_EXECUTORS = '4'):
 
 if __name__ == "__main__":
   
-  executors_ls = ["2,","3","4"]
+  executors_ls = ["2","3","4"]
   
   result_stats = {}
   
   for executors in executors_ls:
     durations = []
     
-    for i in range(5):
+    for i in range(3):
       
       duration = Q3(executors)
 
