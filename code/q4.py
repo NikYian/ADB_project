@@ -4,6 +4,7 @@ from pyspark.sql.functions import col, to_date, year,udf, mean,format_number, co
 from pyspark.sql.types import  FloatType
 from geopy.distance import geodesic
 from pyspark.sql.window import Window
+from app_duration import AppDuration
 
 
 os.environ['PYSPARK_PYTHON'] = "./environment/bin/python"
@@ -94,5 +95,11 @@ print('Q4.2')
 result_a.show()
 
 result_b.show(result_b.count())
+
+app_id = spark.sparkContext.applicationId
+
+duration = AppDuration(app_id)
+
+print('Sum duration of Jobs:', duration, ' seconds')
 
 spark.stop()

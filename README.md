@@ -58,6 +58,6 @@ To run Query 4:
 
  ```hadoop fs -expunge``
 
- ```hdfs dfs -du -h /user/your_username/your_folder```
+ ```hdfs dfs -du -h /```
 
  hdfs dfs -rm -r -skipTrash /user/user/.sparkStaging

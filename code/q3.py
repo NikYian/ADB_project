@@ -144,7 +144,7 @@ def Q3(NUM_EXECUTORS = '4'):
 
 if __name__ == "__main__":
   
-  executors_ls = ["2","3","4"]
+  executors_ls = ["4"]
   
   result_stats = {}
   
@@ -160,9 +160,8 @@ if __name__ == "__main__":
     mean_duration = np.mean(durations)
     std_duration = np.std(durations)
     result_stats[executors] = {"mean": mean_duration, "std": std_duration}
-    
-# Print mean and std results
-  for executors, stats in result_stats.items():
-    print(f"Number of Executors: {executors}, Mean Duration: {stats['mean']:.2f} seconds, Std: {stats['std']:.2f}")
+    # Print mean and std results
+    print(f"Number of Executors: {executors}, Mean Duration: {result_stats[executors]['mean']:.2f} seconds, Std: {result_stats[executors]['std']:.2f}")
+
 
 
