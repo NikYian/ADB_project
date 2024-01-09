@@ -41,7 +41,7 @@ def Q3(NUM_EXECUTORS = '4'):
 
   # Join crime data with geocoding data based on matching LAT and LON values
   df = df.join(geocoding, (df.LAT == geocoding.LAT_g) & (df.LON == geocoding.LON_g)).drop("LAT","LON","LAT_g","LON_g")
-
+  df.cache()
   # Select distinct ZIPcodes from geocoding data
   distinct_geocoding = geocoding.select("ZIPcode").distinct()
 
@@ -144,7 +144,7 @@ def Q3(NUM_EXECUTORS = '4'):
 
 if __name__ == "__main__":
   
-  executors_ls = ["4"]
+  executors_ls = ["2,","3","4"]
   
   result_stats = {}
   

@@ -61,3 +61,5 @@ To run Query 4:
  ```hdfs dfs -du -h /```
 
  hdfs dfs -rm -r -skipTrash /user/user/.sparkStaging
+
+ hdfs dfs -rm -r -skipTrash /spark.eventLog/*

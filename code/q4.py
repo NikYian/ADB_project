@@ -47,6 +47,8 @@ get_distance = udf(get_distance, FloatType())
 
 distance_df = joined_df.withColumn("Distance", get_distance(col("LAT"), col("LON"), col("Y"), col("X")))
 
+distance_df = distance_df.cache()
+
 result_a = distance_df.groupBy("Year").agg(
     mean("Distance").alias("Mean_Distance (km)"),
     count("*").alias("#")
@@ -67,14 +69,23 @@ result_a.show()
 
 result_b.show(result_b.count())
 
+distance_df.unpersist()
+
+##################################################################################################
+# Q4.2
+
+
 joined_df = df.crossJoin(police_stations) \
     .withColumn("Distance", get_distance(col("LAT"), col("LON"), col("Y"), col("X"))) 
     
 window_spec = Window.partitionBy("DR_NO").orderBy("Distance")
 result_df = joined_df.withColumn("row_number", row_number().over(window_spec)).filter(col("row_number") == 1)
 
+joined_df.unpersist()
+
 # Drop the additional column used for window function
 result_df = result_df.drop("row_number")
+result_df = result_df.cache()
 
 result_a = result_df.groupBy("Year").agg(
     mean("Distance").alias("Mean Distance From Closest (km)"),
