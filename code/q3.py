@@ -144,7 +144,7 @@ def Q3(NUM_EXECUTORS = '4'):
 
 if __name__ == "__main__":
   
-  executors_ls = ["2","3","4"]
+  executors_ls = ["4","3","2"]
   
   result_stats = {}
   

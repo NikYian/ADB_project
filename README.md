@@ -52,14 +52,19 @@ To run Query 4:
 
 ```python code/q4.py```
 
+## Useful Commands 
 
+Turn off safe mode 
+
+``` hdfs dfsadmin -safemode leave```
+
+HDFS Report
 
  ```hdfs dfsadmin -report```
 
- ```hadoop fs -expunge``
+See size information about HDFS filesystem
+ ```hdfs dfs -du -h /user```
 
- ```hdfs dfs -du -h /```
-
- hdfs dfs -rm -r -skipTrash /user/user/.sparkStaging
-
- hdfs dfs -rm -r -skipTrash /spark.eventLog/*
+Remove Staging Log and event log
+```hdfs dfs -rm -r -skipTrash /user/user/.sparkStaging```
+```hdfs dfs -rm -r -skipTrash /spark.eventLog/*```
