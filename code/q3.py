@@ -151,7 +151,7 @@ if __name__ == "__main__":
   for executors in executors_ls:
     durations = []
     
-    for i in range(3):
+    for i in range(1):
       
       duration = Q3(executors)
 

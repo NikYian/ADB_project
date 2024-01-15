@@ -25,8 +25,6 @@ def AppDuration(app_id):
             # Calculate the duration in seconds
             duration_seconds = (end_time - start_time).total_seconds()
             sum += duration_seconds
-
-        # print(f"Total Duration: {sum} seconds")
         return sum 
     else:
         print(f"Failed to retrieve job details. Status code: {response.status_code}")

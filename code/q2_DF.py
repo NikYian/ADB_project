@@ -89,7 +89,7 @@ if __name__ == "__main__":
   
     durations = []
 
-    for i in range(5):
+    for i in range(1):
         
         duration = Q2_DF()
 
