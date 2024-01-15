@@ -20,7 +20,6 @@ def Q2_DF():
 
     df = df1.union(df2)
 
-
     # Convert the 'TIME OCC' column to a timestamp
     df = df.withColumn(
         "TIME OCC",
@@ -77,9 +76,6 @@ def Q2_DF():
 
 
     duration = AppDuration(app_id)
-
-    # print('Sum duration of Jobs:', duration, ' seconds')
-
 
     spark.stop()
     
